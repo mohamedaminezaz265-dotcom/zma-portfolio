@@ -1,0 +1,592 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfolio of ZAZ MOHAMED AMINE, aspiring web developer from Tangier, Morocco." />
+  <title>ZAZ MOHAMED AMINE | Aspiring Web Developer</title>
+
+  <style>
+    :root {
+      --bg: #f7f9fc;
+      --surface: #ffffff;
+      --text: #182230;
+      --muted: #64748b;
+      --primary: #147d72;
+      --primary-dark: #0e625b;
+      --blue: #e7f1ff;
+      --border: #e5eaf0;
+      --shadow: 0 16px 40px rgba(31, 49, 75, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.65;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(1100px, 90%);
+      margin: auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255, 255, 255, 0.94);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+    }
+
+    nav {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .logo {
+      color: var(--primary);
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+      align-items: center;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .nav-links a:hover { color: var(--primary); }
+
+    .menu-button {
+      display: none;
+      background: none;
+      border: 0;
+      font-size: 1.6rem;
+      cursor: pointer;
+      color: var(--text);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      align-items: center;
+      gap: 55px;
+      padding: 90px 0 75px;
+    }
+
+    .eyebrow {
+      color: var(--primary);
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      font-size: 0.82rem;
+    }
+
+    h1 {
+      max-width: 720px;
+      margin: 12px 0;
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      line-height: 1.08;
+      letter-spacing: -2px;
+    }
+
+    h1 span { color: var(--primary); }
+
+    .hero p, .section-intro {
+      max-width: 650px;
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 13px;
+      margin-top: 27px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 12px 19px;
+      border: 0;
+      border-radius: 9px;
+      background: var(--primary);
+      color: white;
+      font-weight: 700;
+      font-family: inherit;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .button:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+
+    .button.secondary {
+      color: var(--primary);
+      background: white;
+      border: 1px solid var(--border);
+    }
+
+    .portrait-wrap {
+      justify-self: center;
+      width: min(310px, 100%);
+      padding: 12px;
+      border-radius: 28px;
+      background: var(--blue);
+      box-shadow: var(--shadow);
+      transform: rotate(2deg);
+    }
+
+    .portrait-wrap img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      border-radius: 20px;
+      background: #e8edf4;
+    }
+
+    section { padding: 68px 0; }
+
+    .section-heading {
+      margin-bottom: 28px;
+    }
+
+    .section-heading h2 {
+      margin: 0;
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      letter-spacing: -1px;
+    }
+
+    .about-card, .contact-card {
+      padding: 30px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .about-card p { color: var(--muted); }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .skill {
+      padding: 10px 17px;
+      border: 1px solid #d8e8e5;
+      border-radius: 999px;
+      background: #eef8f6;
+      color: var(--primary-dark);
+      font-weight: 700;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .project {
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+      transition: transform 0.2s;
+    }
+
+    .project:hover { transform: translateY(-4px); }
+
+    .project-art {
+      height: 210px;
+      overflow: hidden;
+      background: #e8edf4;
+    }
+
+    .project-art img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      transition: transform 0.35s ease;
+    }
+
+    .project:hover .project-art img {
+      transform: scale(1.04);
+    }
+
+    .project-content { padding: 22px; }
+
+    .project h3 { margin: 0 0 8px; }
+
+    .project p {
+      margin: 0 0 15px;
+      color: var(--muted);
+    }
+
+    .tag {
+      display: inline-block;
+      margin: 3px 4px 3px 0;
+      padding: 4px 9px;
+      border-radius: 6px;
+      background: #f0f3f7;
+      color: #455468;
+      font-size: 0.78rem;
+    }
+
+    .project-note {
+      display: block;
+      margin-top: 12px;
+      color: #8a5a12;
+      font-size: 0.82rem;
+    }
+
+    .contact-card p { color: var(--muted); }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    #emailText {
+      display: none;
+      margin-top: 18px;
+      color: var(--primary-dark);
+      font-weight: 700;
+      overflow-wrap: anywhere;
+    }
+
+    footer {
+      padding: 24px 0;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 720px) {
+      .menu-button { display: block; }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 71px;
+        left: 0;
+        right: 0;
+        padding: 18px 5%;
+        background: white;
+        border-bottom: 1px solid var(--border);
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links.open { display: flex; }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 55px;
+        gap: 35px;
+      }
+
+      .portrait-wrap { width: 230px; }
+
+      .projects { grid-template-columns: 1fr; }
+
+      section { padding: 50px 0; }
+
+      .about-card, .contact-card { padding: 22px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav class="container" aria-label="Main navigation">
+      <a class="logo" href="#home">ZMA.</a>
+
+      <button
+        class="menu-button"
+        id="menuButton"
+        aria-label="Open menu"
+        aria-expanded="false"
+      >
+        ☰
+      </button>
+
+      <div class="nav-links" id="navLinks">
+        <a href="#home">Home</a>
+        <a href="#skills">Skills</a>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="container hero" id="home">
+      <div>
+        <div class="eyebrow">Aspiring Web Developer · Tangier, Morocco</div>
+        <h1>Hi, I'm <span>ZAZ MOHAMED AMINE</span></h1>
+        <p>
+          I’m learning to build modern, responsive, and user-friendly websites.
+          I enjoy turning ideas into projects and improving my skills one step at a time.
+        </p>
+        <div class="buttons">
+          <a class="button" href="#projects">View My Projects</a>
+          <a class="button secondary" href="#contact">Contact Me</a>
+        </div>
+      </div>
+
+      <div class="portrait-wrap">
+        <img src="profile.jpg.jpeg" alt="Portrait of ZAZ MOHAMED AMINE" />
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="container" id="skills">
+      <div class="section-heading">
+        <div class="eyebrow">What I’m learning</div>
+        <h2>Skills</h2>
+        <p class="section-intro">
+          Skills I’m developing as an aspiring web developer.
+        </p>
+      </div>
+
+      <div class="skills">
+        <span class="skill">HTML5</span>
+        <span class="skill">CSS3</span>
+        <span class="skill">JavaScript</span>
+        <span class="skill">Responsive Web Design</span>
+        <span class="skill">Git &amp; GitHub</span>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="container" id="about">
+      <div class="section-heading">
+        <div class="eyebrow">A little about me</div>
+        <h2>About Me</h2>
+      </div>
+
+      <div class="about-card">
+        <p>
+          Hi! My name is Mohamed Amine, and I’m an aspiring Web Developer from
+          Tangier, Morocco.
+        </p>
+        <p>
+          I’m passionate about web development and enjoy learning how to build
+          modern, responsive, and user-friendly websites. I’m currently developing
+          my skills in HTML, CSS, and JavaScript, while exploring new technologies
+          to improve my abilities.
+        </p>
+        <p>
+          I’m a motivated, curious, and creative person who enjoys solving problems,
+          learning new things, and turning ideas into real projects.
+        </p>
+        <p>
+          My goal is to become a skilled Full-Stack Developer and create useful
+          digital experiences that make a difference.
+        </p>
+        <strong>Let’s build something amazing together!</strong>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="container" id="projects">
+      <div class="section-heading">
+        <div class="eyebrow">A few things I’m exploring</div>
+        <h2>Selected Projects</h2>
+        <p class="section-intro">
+          Project concepts and work in progress. I’ll replace these placeholders
+          with screenshots and live links as the projects are built.
+        </p>
+      </div>
+
+      <div class="projects">
+        <article class="project">
+          <div class="project-art">
+            <img src="worldguide.jpg" alt="Travel destination for the WorldGuide project" />
+          </div>
+          <div class="project-content">
+            <h3>WorldGuide – AI Travel Companion</h3>
+            <p>
+              A travel-platform concept to help people discover destinations,
+              local attractions, and experiences that match their interests,
+              travel style, and budget.
+            </p>
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">PHP</span>
+            <span class="project-note">
+              Concept project · AI recommendations are planned, not implemented yet.
+            </span>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="project-art">
+            <img src="taskflow.jpg" alt="Task management interface concept for TaskFlow" />
+          </div>
+          <div class="project-content">
+            <h3>TaskFlow – Task Manager</h3>
+            <p>
+              A task-management project concept for creating, updating, and
+              organizing tasks, with data stored in a database.
+            </p>
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">PHP</span>
+            <span class="tag">MySQL</span>
+            <span class="project-note">
+              Demo project · Concept only, not a published client project.
+            </span>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="project-art">
+            <img src="shoplite.jpg" alt="Online store design concept for ShopLite" />
+          </div>
+          <div class="project-content">
+            <h3>ShopLite – Online Store</h3>
+            <p>
+              A sample online-store concept for displaying products and building
+              a simple shopping-cart experience.
+            </p>
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">PHP</span>
+            <span class="tag">MySQL</span>
+            <span class="project-note">
+              Demo project · Concept only, not a published client project.
+            </span>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="project-art">
+            <img src="bookeasy.jpg" alt="Appointment booking design concept for BookEasy" />
+          </div>
+          <div class="project-content">
+            <h3>BookEasy – Booking Platform</h3>
+            <p>
+              A booking-platform concept where users can browse available
+              appointments and submit a reservation request.
+            </p>
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">PHP</span>
+            <span class="tag">MySQL</span>
+            <span class="project-note">
+              Demo project · Concept only, not a published client project.
+            </span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="container" id="contact">
+      <div class="section-heading">
+        <div class="eyebrow">Get in touch</div>
+        <h2>Contact Me</h2>
+      </div>
+
+      <div class="contact-card">
+        <p>
+          Have a project idea or want to connect? Send me an email.
+        </p>
+
+        <div class="contact-links">
+          <button
+            class="button"
+            type="button"
+            onclick="showEmail()"
+          >
+            Email Me
+          </button>
+
+          <a
+            class="button secondary"
+            href="https://ma.linkedin.com/in/zaz-mohamed-amine-aa8444290"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            LinkedIn
+          </a>
+
+          <a
+            class="button secondary"
+            href="https://github.com/mohamedaminezaz265-dotcom"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub profile"
+          >
+            GitHub
+          </a>
+        </div>
+
+        <p id="emailText">mohamedaminezaz265@gmail.com</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © <span id="year"></span> ZAZ MOHAMED AMINE · Built while learning.
+    </div>
+  </footer>
+
+  <script>
+    const menuButton = document.getElementById("menuButton");
+    const navLinks = document.getElementById("navLinks");
+
+    menuButton.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("open");
+      menuButton.setAttribute("aria-expanded", isOpen);
+    });
+
+    navLinks.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        menuButton.setAttribute("aria-expanded", "false");
+      });
+    });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    function showEmail() {
+      document.getElementById("emailText").style.display = "block";
+    }
+  </script>
+</body>
+</html>
+```
